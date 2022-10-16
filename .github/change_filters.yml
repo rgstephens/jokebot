@@ -1,0 +1,27 @@
+nlu:
+  - 'data/nlu/*'
+  - 'config.yml'
+  - 'tests/**/*'
+
+core:
+  - 'data/rules/*'
+  - 'data/stories/*'
+  - 'config.yml'
+  - 'domain.yml'
+  - 'tests/**/*'
+
+training:
+  - 'data/**/*'
+  - 'tests/**/*'
+  - 'domain.yml'
+  - 'config.yml'
+  - 'requirements.txt'
+
+actions:
+  - 'actions/**/*'
+  - 'Dockerfile'
+
+deployment:
+  - '.github/workflows/continuous_deployment.yml'
+  - 'actions/**/*' # if action server changed, then deployment must update tag
+  - 'Dockerfile'

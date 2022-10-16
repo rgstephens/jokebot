@@ -1,0 +1,53 @@
+name: Rasa Validate
+on:
+  pull_request:
+
+jobs:
+  check_changed_files:
+    name: Check for file changes
+    runs-on: ubuntu-20.04
+    outputs:
+      nlu: ${{ steps.changed-files.outputs.nlu }}
+      core: ${{ steps.changed-files.outputs.core }}
+      training: ${{ steps.changed-files.outputs.training }}
+      actions: ${{ steps.changed-files.outputs.actions }}
+
+    steps:
+    - name: Checkout git repository
+      uses: actions/checkout@v2
+    - uses: RasaHQ/pr-changed-files-filter@c4f7116a04b8a4596313469429e2ad235f59d9c4
+      id: changed-files
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        filters: .github/change_filters.yml
+        base: ${{ github.ref }}
+
+  training-testing:
+    name: Training and Testing
+    runs-on: ubuntu-latest
+    needs:
+    - check_changed_files
+    if: ${{ needs.check_changed_files.outputs.training == 'true' }}
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Rasa Train and Test GitHub Action
+        id: action
+        #uses: RasaHQ/rasa-train-test-gha@main
+        uses: rgstephens/rasa-train-test-gha@2.3.4
+        with:
+          rasa_version: "2.8.14"
+          data_validate_args: "--domain data"
+          train_args: "--domain data"
+          test_nlu_args: "--domain data"
+          test_core_args: "--domain data"
+          data_validate: true
+          rasa_train: true
+          rasa_test: true
+          cross_validation: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: rasa-test-results
+          path: |
+            ${{ github.workspace }}/results/failed_test_stories.yml
