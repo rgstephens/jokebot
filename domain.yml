@@ -24,7 +24,7 @@ slots:
     - type: custom
 responses:
   utter_version:
-  - text: Oct 15, 2022
+  - text: Oct 15, 2022 (jokebot)
   utter_out_of_scope:
   - text: Sorry, I'm not sure how to respond to that. Type "help" for assistance.
   utter_goodbye:
@@ -36,7 +36,31 @@ responses:
   utter_greet_joke:
   - text: Hi, welcome to the Jokebot
   utter_help_joke:
-  - text: You can ask for Geek jokes, Corny jokes. Also, Kanye, Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.
+  - text: You can ask for Geek jokes, Corny jokes. Also Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.
+    buttons:
+    - title: "Geek"
+      payload: "/geek_joke"
+    - title: "Corny"
+      payload: "/corny_joke"
+    - title: "Ron Swanson"
+      payload: "/ron_quote"
+    - title: "Inspiring"
+      payload: "/inspiring_quote"
+    - title: "Trump"
+      payload: "/trump_quote"
+    # image: https://image.com
+    # custom:
+    #   blocks:
+    #   - type: section
+    #     text:
+    #       text: "Make a bet on when the world will end:"
+    #       type: mrkdwn
+    #     accessory:
+    #       type: datepicker
+    #       initial_date: '2019-05-21'
+    #       placeholder:
+    #         type: plain_text
+    #         text: Select a date
 actions:
   - action_chuck
   - action_ron

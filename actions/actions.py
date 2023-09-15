@@ -203,12 +203,16 @@ class ActionGeek(Action):
 
     def run(self, dispatcher, tracker, domain):
         # what your action should do
-        request = json.loads(requests.get("http://quotes.stormconsultancy.co.uk/random.json").text)  # make an apie call
-        author = request["author"]
-        quote = request["quote"]
-        permalink = request["permalink"]
-        # message = quote + ' - ' + author + ' ' + permalink
-        message = quote + " - [" + author + "](" + permalink + ")"
+        request = requests.get("http://quotes.stormconsultancy.co.uk/random.json")
+        if request.status_code == 200:
+            msg = json.loads(request.text)  # make an apie call
+            author = msg["author"]
+            quote = msg["quote"]
+            permalink = msg["permalink"]
+            # message = quote + ' - ' + author + ' ' + permalink
+            message = quote + " - [" + author + "](" + permalink + ")"
+        else:
+            message = "quote service error, error: " + str(request.status_code)
         dispatcher.utter_message(message)  # send the message back to the user
         return []
 
@@ -220,10 +224,12 @@ class ActionTrump(Action):
 
     def run(self, dispatcher, tracker, domain):
         # what your action should do
-        request = json.loads(
-            requests.get("https://api.whatdoestrumpthink.com/api/v1/quotes/random").text
-        )  # make an apie call
-        joke = request["message"] + " - Donald Trump"
+        request = requests.get("https://api.whatdoestrumpthink.com/api/v1/quotes/random")
+        if request.status_code == 200:
+            msg = json.loads(request.text)  # make an apie call
+            joke = msg["message"] + " - Donald Trump"
+        else:
+            joke = "quote service error, error: " + str(request.status_code)
         dispatcher.utter_message(joke)  # send the message back to the user
         return []
 

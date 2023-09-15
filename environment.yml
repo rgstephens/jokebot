@@ -1,0 +1,15 @@
+python: "3.10.11"
+build_dependencies:
+  - pip
+dependencies:
+  - hyperopt==0.2.7
+  - python-dotenv==1.0.0
+  - rasa_plus>=3.8.0a1
+  - spacy==3.6.0
+  - mlflow>=2.5
+  - transformers>=4.31.0
+  - llama-cpp-python>=0.1.77
+  - huggingface-hub>=0.16.4
+  # spacy info en_core_web_md --url
+  - en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.6.0/en_core_web_md-3.6.0-py3-none-any.whl
+  # - en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.0/en_core_web_sm-3.4.0-py3-none-any.whl

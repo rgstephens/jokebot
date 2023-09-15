@@ -7,7 +7,7 @@ import logging
 from importlib.metadata import version
 
 logger = logging.getLogger(__name__)
-vers = "Vers: 1.1.3, Date: Oct 15, 2022"
+vers = "Vers: 1.2.0, Date: Jul 20, 2023"
 
 
 class ActionSessionStart(Action):

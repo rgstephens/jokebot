@@ -1,0 +1,33 @@
+**This README is composed by a GHA; do not edit it directly (your changes will be lost). The overview descriptions comes from overview.txt**
+
+## CSE Recipes
+This repo is meant to be a centralized place for all CSE code examples and recipes to live.
+Each branch is one example, and the branches are indexed below with a short description.
+
+`ctrl+f` this README to find what you're looking for then checkout the relevant branch.
+
+### Adding Examples
+To add an example:
+
+From an existing repo that you've been working on already:
+* Checkout a branch with a name that doesn't exist on `cse-recipes` yet e.g. `git checkout -b my_existing_example`
+* Add `cse_recipes` as a new remote e.g. `git remote add cse git@github.com:RasaHQ/cse-recipes.git`
+* Add description.txt and push to the new remote e.g. `git push cse my_existing_example` (***There must be a blank newline at the end of your `description.txt` file or the README.md generation will be broken!***)
+
+From scratch:
+* Create a new branch on `cse_recipes`. You can branch off of any branch.
+* Create your example code/README/etc.
+* Add/edit a file called `description.txt` with a one or two line description of what's in the branch. (***There must be a blank newline at the end of your `description.txt` file or the README.md generation will be broken!***)
+* Commit your code + description.txt.
+(and push your branch)
+
+The Github action defined in .github/workflows/index_branches.yml will automatically compose the descriptions of all branches
+into the README on the `main` branch at 4am CET every day.
+You can also [run it manually](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow#running-a-workflow)
+to update it immediately.
+
+**Branches with no `description.txt` are not included in the index. Add one if your branch should be indexed**
+
+To modify the branch indexing action itself, modify it on main, or on a separate branch then PR into main.
+
+### Index of Existing Examples

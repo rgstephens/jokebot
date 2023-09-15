@@ -1,0 +1,12 @@
+{
+    "help": {
+        "file": "tests_e2e/jokes.yml",
+        "expected": "utter_greet_joke",
+        "predicted": "You can ask for Geek jokes, Corny jokes. Also Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.'"
+    },
+    "random": {
+        "file": "tests_e2e/jokes.yml",
+        "expected": "utter_greet_joke",
+        "predicted": "You can ask for Geek jokes, Corny jokes. Also Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.'"
+    }
+}

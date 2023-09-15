@@ -1,0 +1,27 @@
+fixtures: # used to mock API endpoints
+  - one_card_is_eligible:
+    - fixture_num_cards: one
+    - fixture_eligibility: True
+
+test_cases:
+  - test_case: greet
+    steps:
+      - user: hi there
+      - utter: utter_greet_joke
+      - utter: utter_help_joke
+
+  - test_case: help
+    steps:
+      - user: i need help
+      - utter: utter_greet_joke
+
+  - test_case: random
+    steps:
+      - user: i need help
+      - utter: utter_greet_joke
+
+  # - test_case: creed_quote
+  #   steps:
+  #     - user: how about a bratton creed quote
+  #     - utter: creed_quote
+  #     - action: action_creed

@@ -13,6 +13,12 @@
 action_endpoint:
  url: "http://localhost:5055/webhook"
 
+# tracing:
+#   type: otlp
+#   endpoint: localhost:8200
+#   insecure: true
+#   service_name: rasa
+
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
 # https://rasa.com/docs/rasa/api/tracker-stores/

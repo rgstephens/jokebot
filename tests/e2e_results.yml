@@ -1,0 +1,34 @@
+test_results:
+
+- name: greet
+  pass_status: true
+  expected_steps:
+  - user: hi there
+  - utter: utter_greet_joke
+  - utter: utter_help_joke
+  difference: []
+
+- name: help
+  pass_status: false
+  expected_steps:
+  - user: i need help
+  - utter: utter_greet_joke
+  difference:
+  - '  user: i need help'
+  - '- bot: You can ask for Geek jokes, Corny jokes. Also Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.'
+  - '+ bot: utter_greet_joke'
+
+- name: random
+  pass_status: false
+  expected_steps:
+  - user: i need help
+  - utter: utter_greet_joke
+  # - test_case: creed_quote
+  #   steps:
+  #     - user: how about a bratton creed quote
+  #     - utter: creed_quote
+  #     - action: action_creed
+  difference:
+  - '  user: i need help'
+  - '- bot: You can ask for Geek jokes, Corny jokes. Also Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.'
+  - '+ bot: utter_greet_joke'

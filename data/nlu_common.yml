@@ -201,12 +201,20 @@ nlu:
     - reset slots
     - clear slots
     - restart
+    - re-start
+    - reboot
+    - restart the bot
+    - restart chatbot
 - intent: show_slots
   examples: |
     - slots
     - show slots
     - view slots
     - let's see the slots
+    - show me the slots
+    - see all slots
+    - show all of the slots
+    - display the slots
 - intent: version
   examples: |
     - version

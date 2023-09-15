@@ -1,0 +1,22 @@
+name: track_example
+
+python_env: environment.yml
+
+entry_points:
+  train:
+    command: "python src/train.py"
+  test:
+    command: "python src/test.py"
+  main:
+    parameters:
+          train_data: {type: string, default: "train_test_split/training_data.yml"}
+          config: {type: string, default: "config.yml"}
+          test_data: {type: string, default: "train_test_split/test_data.yml"}
+          model: {type: string, default: "base"}
+          diet_epochs: {type: string, default: "100"}
+          threshold: {type: real, default: 0.7}
+          spacy_model: {type: string, default: "en_core_web_md"}
+    command: "python main.py
+                             --config {config}
+                             --train-data {train_data}
+                             --test-data {test_data}"

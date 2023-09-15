@@ -12,19 +12,23 @@ pipeline:
     min_ngram: 1
     max_ngram: 4
   - name: CRFEntityExtractor
-  # - name: rasa_plus.ml.LLMIntentClassifier
-  #   llm:
-  #     type: "llamacpp"
-  #     model_path: "/Users/greg/Downloads/nous-hermes-13b.ggmlv3.q4_0.bin"
-  #     temperature: 0.7
-  #   embeddings:  # 672 secs
-  #     type: "llamacpp"
-  #     model_path: "/Users/greg/Downloads/nous-hermes-13b.ggmlv3.q4_0.bin"
-    # llm:
-    #   model_name: "text-davinci-003"
-  - name: DIETClassifier
-    epochs: 100
-    constrain_similarities: true
+  - name: rasa_plus.ml.LLMIntentClassifier
+    # embeddings:
+    #   type: "huggingface_hub"
+    #   # repo_id: "sentence-transformers/all-MiniLM-L6-v2"  # works
+    #   # repo_id: "facebook/bart-large"   # not a sentence-transformer
+    #   # repo_id: "sentence-transformers/all-mpnet-base-v2"
+    #   task: "feature-extraction"
+    #   # task: "sentence-transformers"
+    llm:
+      type: "huggingface_hub"
+      repo_id: "TheBloke/Llama-2-7B-Chat-GGML"
+      # repo_id: "leoclement/llama-2-7b-4bit"
+      # repo_id: "meta-llama/Llama-2-7b-chat-hf"  # restricted
+      task: "text-generation"
+  # - name: DIETClassifier
+  #   epochs: 100
+  #   constrain_similarities: true
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100

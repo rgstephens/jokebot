@@ -1,0 +1,9 @@
+{
+    "passed": [
+        "tests_e2e/jokes.yml::greet"
+    ],
+    "failed": [
+        "tests_e2e/jokes.yml::help",
+        "tests_e2e/jokes.yml::random"
+    ]
+}

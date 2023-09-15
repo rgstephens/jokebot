@@ -7,3 +7,6 @@ __pycache__
 gactions/
 .rasa/
 tensorboard/
+mlruns/
+mlartifacts/
+train_test_split/

@@ -12,19 +12,24 @@ pipeline:
     min_ngram: 1
     max_ngram: 4
   - name: CRFEntityExtractor
-  # - name: rasa_plus.ml.LLMIntentClassifier
-  #   llm:
-  #     type: "llamacpp"
-  #     model_path: "/Users/greg/Downloads/nous-hermes-13b.ggmlv3.q4_0.bin"
-  #     temperature: 0.7
-  #   embeddings:  # 672 secs
-  #     type: "llamacpp"
-  #     model_path: "/Users/greg/Downloads/nous-hermes-13b.ggmlv3.q4_0.bin"
+  - name: rasa_plus.ml.LLMIntentClassifier
+    # embeddings:
+    #   type: "openai"
+    #   model: "text-embedding-ada-002"
+    embeddings:
+      type: "llamacpp"
+      model_path: "/Volumes/200GB/models/wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin"
+      # model_path: "/Users/greg/Downloads/ggml-model-gpt4all-falcon-q4_0.bin"
+    llm:
+      type: "llamacpp"
+      model_path: "/Volumes/200GB/models/wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin"
+      # model_path: "/Users/greg/Downloads/ggml-model-gpt4all-falcon-q4_0.bin"
+      temperature: 0.7
     # llm:
     #   model_name: "text-davinci-003"
-  - name: DIETClassifier
-    epochs: 100
-    constrain_similarities: true
+  # - name: DIETClassifier
+  #   epochs: 100
+  #   constrain_similarities: true
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100

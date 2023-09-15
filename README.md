@@ -4,6 +4,14 @@ This is a Rasa demo bot. You can try the bot out at [https://avkana.com/jokebot]
 
 You can ask for Geek jokes, Corny jokes. Also, Kanye, Ron Swanson, Creed, Breaking Bad, Inspiring or Trump quotes.
 
+## e2e Test Issues
+
+```sh
+rasa test e2e tests_e2e       # works
+rasa test e2e -o tests_e2e    # e2e_test.py:156: UserWarning: Path to test cases does not exist: test_e2e. Please provide a valid path to test cases.
+rasa test e2e -o tests_e2e/   # runs tests, does not write results file, No such file or directory: 'tests/e2e_results.yml'
+```
+
 ## ToDo
 
 - Brainy quote, `https://github.com/Hemil96/Brainyquote-API`
